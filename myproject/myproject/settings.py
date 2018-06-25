@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'projectsql',#选择数据库的名,请确认你的mysql中有这个库
+        'NAME': 'myprojectsql',#选择数据库的名,请确认你的mysql中有这个库
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',

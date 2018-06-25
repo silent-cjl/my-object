@@ -110,7 +110,7 @@
                         <!-- 新提示 -->
                         <li class="am-dropdown" data-am-dropdown>
                             <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
-                                <i class="am-icon-bell"></i>
+                                <i class="am-icon-bel「」l"></i>
                                 <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
                             </a>
 
@@ -211,18 +211,24 @@
                 
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 会员管理
+                        <i class="am-icon-user sidebar-nav-link-logo"></i> 会员管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                            <a href="{% url "myadmin_user_add" %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 会员添加
                             </a>
+
+                           <!--  <script type="text/javascript">
+                                $('.sidebar-nav-link-logo').click(function(){
+                                    $.get('{% url "myadmin_user_add" %}')
+                                })
+                            </script> -->
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
+                            <a href="{% url 'myadmin_user_list' %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 会员列表
                             </a>
                         </li>
@@ -236,13 +242,13 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                        <a href="{% url 'myadmin_types_add' %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 分类添加
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
+                            <a href="{% url 'myadmin_types_list' %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 分类列表
                             </a>
                         </li>
@@ -251,12 +257,12 @@
 
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 商品管理
+                        <i class="am-icon-shopping-bag sidebar-nav-link-logo"></i> 商品管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                            <a href="{% url 'myadmin_goods_add' %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商品添加
                             </a>
                         </li>
@@ -271,7 +277,7 @@
 
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 订单管理
+                        <i class="am-icon-th-large sidebar-nav-link-logo"></i> 订单管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
@@ -291,6 +297,7 @@
         <!-- 内容区域 -->
         <div class="tpl-content-wrapper">
 
+            {% block header %}
             <div class="container-fluid am-cf">
                 <div class="row">
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
@@ -301,11 +308,11 @@
                         <button type="button" class="page-header-button"><span class="am-icon-paint-brush"></span> 设置</button>
                     </div>
                 </div>
-
+            {% endblock %}
             </div>
 
             <div class="row-content am-cf">
-                {% block con%}
+                {% block con %}
                 <div class="row  am-cf">
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
                         <div class="widget am-cf">
