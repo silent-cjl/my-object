@@ -77,7 +77,7 @@ def add(request):
         try:
             data = request.POST.dict()
             del(data['csrfmiddlewaretoken'])
-            print(data)
+            data['password']=make_password(data['password'],None,'pbkdf2_sha256')
             s=uploads(request)
             data['pic'] = s
             obj = Users.objects.create(**data)
@@ -127,15 +127,21 @@ def edit(request):
         return render(request,'myadmin/user/edit.html',data)
 
     elif request.method == 'POST':
-
-        try:
+            print(request.POST)
+        # try:
             obj.username = request.POST['username']
             obj.phone = request.POST['phone']
-            obj.age = request.POST['age']
-            obj.sex = request.POST['sex']
-            obj.email = request.POST['email']
+            print(obj)
+            if request.POST['age']:
+                print(1)
+                obj.age = request.POST['age']
+            
+            if request.POST['email']:
+                print(3)
+
+                obj.email = request.POST['email']
             obj.save()
             return HttpResponse('<script>alert("修改成功");location.href="'+reverse('myadmin_user_list')+'"</script>')
-        except:
-            return HttpResponse('<script>alert("修改失败");location.href="'+reverse('myadmin_user_edit')+'?uid='+str(obj.id)+'"</script>')
+        # except:
+        #     return HttpResponse('<script>alert("修改失败");location.href="'+reverse('myadmin_user_edit')+'?uid='+str(obj.id)+'"</script>')
         

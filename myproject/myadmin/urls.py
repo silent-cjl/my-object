@@ -20,9 +20,15 @@ urlpatterns = [
 
     #商品管理
     url(r'^goods/add/$',goodsviews.add,name='myadmin_goods_add'),
-    # url(r'^goods/list/$',goodsviews.list,name='myadmin_goods_list'),
-    # url(r'^goods/delete/$',goodsviews.delete,name='myadmin_goods_delete'),
-    # url(r'^goods/edit/$',goodsviews.edit,name='myadmin_goods_edit'),
+    url(r'^goods/list/$',goodsviews.list,name='myadmin_goods_list'),
+    url(r'^goods/delete/$',goodsviews.delete,name='myadmin_goods_delete'),
+    url(r'^goods/edit/$',goodsviews.edit,name='myadmin_goods_edit'),
+    #订单列表
+    url(r'^orders/list/$',views.orderslist,name='myadmin_orders_list'),
+    url(r'^order/info/$',views.orderinfo,name='myadmin_orders_info'),
+    url(r'^order/edit/$',views.orderedit,name='myadmin_orders_edit'),
 
+    url(r'^login/$',views.login,name='login'),
+    url(r'^logout/$',views.logout,name='logout'),
 
 ]

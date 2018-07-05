@@ -1,0 +1,114 @@
+{% extends 'myadmin/public/base.html' %}
+
+{% block con %}
+<link rel="stylesheet" type="text/css" href="/static/myadmin/css/bootstrap-fileinput.css">
+<div class="row-content am-cf">
+    <div class="row">
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                
+                <div class="widget-body am-fr">
+                    <form action="{% url 'myadmin_goods_edit' %}?id={{ info.id }}" method="post" enctype="multipart/form-data" class="am-form tpl-form-line-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{ info.id }}">
+                        
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                所属类别
+                            </label>
+                            <div class="am-u-sm-9">
+                                <select name="typeid" data-am-selected="{btnSize: 'sm'}" style="display: none;">
+    
+                                    {% for i in uinfo %}
+
+                                    {% if info.typeid.id == i.id  %}
+                                    <option selected value="{{ i.id }}">{{ i.typename }}</option>
+                                    {% else %}
+                                    <option value="{{ i.id }}">{{ i.typename }}</option>
+                                    {% endif %}
+
+                                    {% endfor %}}
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">
+                                标题
+                            </label>
+                            <div class="am-u-sm-9">
+                                <input type="text" value="{{ info.title }}" name="title" class="tpl-form-input">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label">
+                                描述
+                            </label>
+                            <div class="am-u-sm-9">
+                                <input type="text" value="{{ info.descr }}" name="descr" class="tpl-form-input">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                价格
+                            </label>
+                            <div class="am-u-sm-9">
+                                <input type="text" value="{{ info.price }}" name="price" class="tpl-form-input">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                库存
+                            </label>
+                            <div class="am-u-sm-9">
+                                <input type="number" value="{{ info.store }}" name="store" class="tpl-form-input">
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                状态
+                            </label>
+                            <div class="am-u-sm-9">
+                                <input type="number" value="{{ info.status }}" name="status" class="tpl-form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user-weibo" class="am-u-sm-3 am-form-label">上传头像 </label>
+                           <div class="am-u-sm-9 fileinput fileinput-new" data-provides="fileinput"  id="exampleInputUpload">
+                               <div class="tpl-form-file-img fileinput-new thumbnail" >
+                                   <img id='picImg'  src="{{ info.pics }}" width="150" />
+                               </div>
+                               <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                               <div>
+                                   <span class="btn btn-primary btn-file">
+                                       <span class="fileinput-new am-btn am-btn-danger am-btn-sm">选择文件</span>
+                                       <span class="fileinput-exists am-btn am-btn-danger am-btn-sm">换一张</span>
+                                       <input type="file" name="pics" id="picID" accept="image/gif,image/jpeg,image/x-png"/>
+                                   </span>
+                                   <a href="javascript:;" class=" fileinput-exists am-btn am-btn-danger am-btn-sm" data-dismiss="fileinput">移除</a>
+                               </div>
+                           </div>
+                       </div>
+
+                       
+                       
+                        <div class="am-form-group">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <button class="am-btn am-btn-primary tpl-btn-bg-color-success ">
+                                    提交
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<script type="text/javascript" src="/static/myadmin/js/bootstrap-fileinput.js"></script>
+{% endblock %}

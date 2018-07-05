@@ -14,8 +14,7 @@ def gettlist():
         else:
             t = Types.objects.get(id=i.pid)
             i.pname = t.typename
-        s = i.path.count(',')-1
-        i.typename = '|---'*s + ' ' + i.typename
+        
 
     return tlist
 
